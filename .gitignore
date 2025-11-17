@@ -1,0 +1,25 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- IDE / Éditeurs ---
+.vscode/
+.idea/
+
+# --- macOS ---
+.DS_Store
+
+# --- Environnements virtuels ---
+.venv/
+env/
+
+# --- Données / sorties ---
+data/input/*
+!data/input/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# --- Autres fichiers temporaires ---
+*.log
