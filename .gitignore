@@ -4,22 +4,22 @@ __pycache__/
 *.pyo
 *.pyd
 
-# --- IDE / Éditeurs ---
+# --- IDE ---
 .vscode/
 .idea/
 
 # --- macOS ---
 .DS_Store
 
-# --- Environnements virtuels ---
+# --- Virtual environnements ---
 .venv/
 env/
 
-# --- Données / sorties ---
+# --- Inputs / Outputs ---
 data/input/*
 !data/input/.gitkeep
 outputs/*
 !outputs/.gitkeep
 
-# --- Autres fichiers temporaires ---
+# --- Other temporary files ---
 *.log
