@@ -12,9 +12,15 @@ venv/
 outputs/
 uploads/
 
-# Streamlit cache
-.streamlit/
+# IDE
+.idea/
 
-# OS files
+# Data files
+*.xlsx
+
+# OS
 .DS_Store
 Thumbs.db
+
+# Streamlit
+.streamlit/
