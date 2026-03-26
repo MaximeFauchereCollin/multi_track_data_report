@@ -1,4 +1,4 @@
-# 🎓 Student Analytics Dashboard
+# 🎓 Multi-Track Data Report
 
 ## 📘 Description
 **Student Analytics** is a Python-based data processing and visualization tool that analyzes student performance across multiple academic tracks and cohorts.  
