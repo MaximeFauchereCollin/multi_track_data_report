@@ -1,3 +1,13 @@
+"""
+Purpose
+-------
+This app provides a simple UI around the `report_generator.py` pipeline:
+- Upload an Excel workbook (.xlsx) where each sheet represents a Track.
+- Run the cleaning + stats + export pipeline on demand (button).
+- Display KPIs, summary tables, and saved figures.
+- Offer downloads for cleaned CSV + Excel report.
+"""
+
 from __future__ import annotations
 
 from pathlib import Path
