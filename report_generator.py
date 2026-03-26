@@ -1,6 +1,4 @@
 """
-Student grades report generator.
-
 What this script does
 ---------------------
 1) Loads an Excel workbook where *each sheet represents a Track*.
@@ -10,21 +8,6 @@ What this script does
    - outputs/cleaned_dataset.csv
    - outputs/summary_report.xlsx
    - outputs/figures/*.png
-
-Expected input layout
----------------------
-- One Excel file (XLSX).
-- Each sheet contains the same columns (at least the ones used below).
-- Sheet name is used as the Track label (stored in a "Track" column).
-
-Design decisions (important)
-----------------------------
-- Scores are expected in [0, 100]. Values outside are set to NA.
-- Missing numeric scores are imputed with the *mean within the same Track*.
-  Rationale: preserves per-Track level differences and avoids shrinking all Tracks to a global mean.
-- Missing boolean-like values are imputed with the *mode within the same Track*.
-- Rows missing "core" columns are dropped because downstream stats/plots assume complete records.
-  If you prefer "keep more rows", remove/relax the dropna() at the end of clean_df().
 """
 
 from __future__ import annotations
