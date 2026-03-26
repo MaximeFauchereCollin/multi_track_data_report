@@ -85,11 +85,6 @@ def load_all_sheets(xlsx_path: str | Path) -> pd.DataFrame:
     Each sheet is read into a DataFrame, then we add a "Track" column equal to the sheet name.
     Finally, all sheets are concatenated into a single DataFrame.
 
-    Parameters
-    ----------
-    xlsx_path : str | Path
-        Path to the Excel workbook.
-
     Returns
     -------
     pd.DataFrame
