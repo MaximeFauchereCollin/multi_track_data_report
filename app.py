@@ -1,29 +1,3 @@
-"""
-Streamlit dashboard for the Student Grades analytics pipeline.
-
-Purpose
--------
-This app provides a simple UI around the `report_generator.py` pipeline:
-- Upload an Excel workbook (.xlsx) where each sheet represents a Track.
-- Run the cleaning + stats + export pipeline on demand (button).
-- Display KPIs, summary tables, and saved figures.
-- Offer downloads for cleaned CSV + Excel report.
-
-Design decisions
-----------------
-- Uploaded files are persisted to disk using a SHA256 content hash.
-  This avoids name collisions and reduces Streamlit rerun/caching quirks.
-- The pipeline is triggered by a button to avoid re-running on every rerun.
-- Results are stored in `st.session_state` to persist across reruns until the file changes.
-
-Expected dependencies
----------------------
-- streamlit, pandas
-- Your local module `report_generator` must be importable and should expose:
-  load_all_sheets, clean_df, drop_duplicates, compute_all_stats,
-  export_cleaned_data, export_stats_excel, export_figures_png, FIGDIR, OUTDIR
-"""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -71,11 +45,6 @@ def _persist_upload_to_disk(uploaded_file) -> Path:
     - Streamlit reruns the script often; keeping a stable file path helps avoid surprises.
     - Users may upload files with identical names; content hashing prevents collisions.
     - This also avoids relying on Streamlit's temp objects if you want reproducible exports.
-
-    Parameters
-    ----------
-    uploaded_file : streamlit.runtime.uploaded_file_manager.UploadedFile
-        The uploaded file handle returned by st.file_uploader().
 
     Returns
     -------
