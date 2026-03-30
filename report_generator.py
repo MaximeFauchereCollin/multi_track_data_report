@@ -25,10 +25,10 @@ import seaborn as sns
 # =============================================================================
 
 # Treat these string values as missing data.
-SPECIAL_NULLS: list[str] = ["", " ", "NA", "N/A", "n/a", "NaN", "-", "Waived", "None", "null"]
+SPECIAL_NULLS = ["", " ", "NA", "N/A", "n/a", "NaN", "-", "Waived", "None", "null"]
 
 # Mapping for boolean-like values found in spreadsheets.
-BOOL_MAP: dict[str, bool] = {
+BOOL_MAP = {
     "TRUE": True,
     "FALSE": False,
     "Y": True,
@@ -44,12 +44,12 @@ BOOL_MAP: dict[str, bool] = {
 }
 
 # Columns used throughout the pipeline.
-STRING_COLS: list[str] = ["FirstName", "LastName", "Class", "Cohort", "Track"]
-SCORE_COLS: list[str] = ["Math", "English", "Science", "History", "Attendance (%)", "ProjectScore"]
-BOOLEAN_COLS: list[str] = ["IncomeStudent", "Passed (Y/N)"]
+STRING_COLS = ["FirstName", "LastName", "Class", "Cohort", "Track"]
+SCORE_COLS = ["Math", "English", "Science", "History", "Attendance (%)", "ProjectScore"]
+BOOLEAN_COLS = ["IncomeStudent", "Passed (Y/N)"]
 
 # Columns required to produce the stats/plots without special-case handling.
-REQUIRED_FOR_REPORT: list[str] = [
+REQUIRED_FOR_REPORT = [
     "Track",
     "Cohort",
     "Math",
@@ -93,7 +93,7 @@ def load_all_sheets(xlsx_path: str | Path) -> pd.DataFrame:
     xlsx_path = Path(xlsx_path)
     xl = pd.ExcelFile(xlsx_path, engine="openpyxl")
 
-    frames: list[pd.DataFrame] = []
+    frames = []
     for sheet in xl.sheet_names:
         df = pd.read_excel(xlsx_path, sheet_name=sheet, engine="openpyxl")
         df["Track"] = sheet  # sheet name becomes the Track label
@@ -304,7 +304,7 @@ class BaseGroupStatistics:
         """
         Correlation between attendance and project score by group (Pearson r in [-1, 1]).
         """
-        rows: list[dict] = []
+        rows = []
         for key, g in self.df.groupby(self.group_col, dropna=False):
             corr = g["Attendance (%)"].corr(g["ProjectScore"])
             rows.append({self.group_col: key, "Correlation (r)": corr})
@@ -322,7 +322,7 @@ class BaseGroupStatistics:
             data=self.pass_rate(),
             x=self.group_col,
             y="Pass Rate (%)",
-            hue=self.group_col,      # keep legend consistent; can be removed if you prefer
+            hue=self.group_col,
             palette="pastel",
         )
         plt.title(f"Pass Rate by {self.group_col}")
